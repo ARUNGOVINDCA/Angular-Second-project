@@ -22,6 +22,7 @@ export class RoomsComponent implements OnInit {
     bookedRooms:5
   };
   
+  title = 'Room List';
 
   roomList : RoomList[]= [];
 
@@ -65,11 +66,28 @@ export class RoomsComponent implements OnInit {
     
     this.hideRooms = !this.hideRooms;
 
+    this.title ="Special ROom List";
 
   }
   selectRoom(room : RoomList){
       this.selectedRoom = room;  }
 
+      
+      addRoom(){
+        const room:RoomList ={
+          roomNumber:4,
+          roomType : 'BASIC Room',
+          aminities : 'TV, BATHROOM',
+          price :200,
+          photos : 'https://as1.ftcdn.net/v2/jpg/06/19/00/08/1000_F_619000872_AxiwLsfQqRHMkNxAbN4l5wg1MsPgBsmo.jpg',
+          checkInTime :new Date('1-DEC-2025'),
+          checkOutTime :new Date ('12-JAN-2025'),
+            rating :2.8
+        };
+            // this.roomList.push(room);
+          this.roomList = [...this.roomList,room];
 
-    
+      }
+
+      
 };
