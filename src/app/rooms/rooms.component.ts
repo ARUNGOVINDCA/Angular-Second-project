@@ -1,12 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
 import { Room, RoomList } from './rooms';
+
 
 @Component({
   selector: 'app-rooms',
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss']
 })
-export class RoomsComponent implements OnInit {
+export class RoomsComponent implements OnInit ,DoCheck{
   
   hotelName = "SHRATON-5 STAR HOTEL";
 
@@ -62,6 +63,10 @@ export class RoomsComponent implements OnInit {
       }
         ]
     }
+    ngDoCheck(): void {
+      console.log('On Changes is called')
+    }
+
   toggle(){
     
     this.hideRooms = !this.hideRooms;
