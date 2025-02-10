@@ -63,13 +63,14 @@
           "defaultConfiguration": "production"
         },
         "serve": {
+          "options": {"port":4280},
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
               "browserTarget": "hotelinventory:build:production"
             },
             "development": {
-              "browserTarget": "hotelinventory:build:development"
+              "browserTarget": "hotelinventory:build:development" 
             }
           },
           "defaultConfiguration": "development"
