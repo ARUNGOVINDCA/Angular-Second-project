@@ -1,5 +1,6 @@
-import { Component, DoCheck, OnInit, ViewChild } from '@angular/core';
+import { AfterViewChecked, AfterViewInit, Component, DoCheck, OnInit, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Room, RoomList } from './rooms';
+import { HeaderComponent } from '../header/header.component';
 
 
 @Component({
@@ -7,7 +8,7 @@ import { Room, RoomList } from './rooms';
   templateUrl: './rooms.component.html',
   styleUrls: ['./rooms.component.scss']
 })
-export class RoomsComponent implements OnInit ,DoCheck{
+export class RoomsComponent implements OnInit ,DoCheck,AfterViewInit ,AfterViewChecked{
   
   hotelName = "SHRATON-5 STAR HOTEL";
 
@@ -27,8 +28,13 @@ export class RoomsComponent implements OnInit ,DoCheck{
 
   roomList : RoomList[]= [];
 
+  @ViewChild(HeaderComponent,) headerComponent!:HeaderComponent;
+
+  @ViewChildren(HeaderComponent) headerChildreanComponent!:QueryList <HeaderComponent>;
+
     constructor() {}
     ngOnInit(): void {
+      // console.log(this.headerComponent);
         this.roomList = [
           {
             roomNumber:1,
@@ -65,6 +71,17 @@ export class RoomsComponent implements OnInit ,DoCheck{
     }
     ngDoCheck(): void {
       console.log('On Changes is called')
+    }
+    ngAfterViewInit(): void {
+      // console.log(this.headerComponent);
+      this.headerComponent.title ="Room View";
+      this.headerChildreanComponent.last.title="Last Title";
+      this.headerChildreanComponent.get(0);
+
+    }
+
+    ngAfterViewChecked(): void {
+      
     }
 
   toggle(){
